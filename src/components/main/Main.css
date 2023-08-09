@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+main{
+    margin-top: 170px;
+}
+
+.orderFood-text{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 21px;
+}
+
+.orderFood-text h1{
+    color: #FBDDBB;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 77px;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+
+.orderFood-text p{
+    color: rgba(255, 255, 255, 0.74);
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 33px;
+}
+
+.orderFood-image {
+    width: 400px;
+}
+
+.orderFood-image img{
+    width: 100%;
+}
+
+
+
+.special-meals{
+    margin-top: 180px;
+}
+
+.special-meals h3{
+    font-family: 'Poppins', sans-serif;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 33px;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.special-meals p{
+    width: 609px;
+    font-family: 'Poppins', sans-serif;
+    color: rgba(255, 255, 255, 0.83);
+    margin: auto;
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 33px;
+}
+
+
+.specialMeals-foods{
+    margin-top: 100px;
+}
+
+.specialMeals-food{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
+
+.specialMeals-food img{
+    width: 250px;
+    margin-bottom: 35px;
+}
+
+.specialMeals-food h4{
+    color: #FBDDBB;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 33px; /* 122.222% */
+}
+
+.specialMeals-food p{
+    width: 288px;
+    color: rgba(255, 255, 255, 0.83);
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 33px; /* 183.333% */
+}
+
+.get-update{
+    margin-top: 270px;
+}
+
+.getUpdate-datas{
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.getUpdate-text h3{
+    color: #FBDDBB;
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 33px;
+}
+
+.getUpdate-text p{
+    color: rgba(255, 255, 255, 0.95);
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 33px;
+}
+
+.getUpdate-form input{
+    width: 299px;
+    height: 51px;
+}
+
+.getUpdate-form button{
+    width: 182px;
+    height: 51px;
+    background: #FBDDBB;
+
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+}
