@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,200&display=swap');
+
+.all-cart-data{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.cart-data{
+    width: 100%;
+}
+
+.cart-food-data{
+    display: flex;
+    margin-left: 60px;
+    gap: 100px;
+}
+
+.cart-food-img{
+    display: flex;
+    gap: 15px;
+}
+
+.cart-food-img img{
+    width: 70px;
+}
+
+.cart-food-img h3{
+    color: #00302E;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 33px;
+}
+
+.cart-food-data h3{
+    color: #00302E;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 33px;
+}

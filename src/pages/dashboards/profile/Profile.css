@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,200&display=swap');
+
+.profile-data{
+    width: 100%;
+    margin-top: 180px;
+    padding-left: 36px;
+}
+
+.profile-data h3{
+    color: #00302E;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 33px;
+}
+
+.profile-form{
+    margin-top: 33px;
+    display: flex;
+    flex-direction: column;
+    gap: 47px;
+}
+
+.profile-form input{
+    width: 488px;
+    height: 71px;
+    border: 1px solid rgba(251, 221, 187, 0.51);
+    color: rgba(0, 48, 46, 0.53);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 33px; /* 235.714% */}
+
+.MakePayment{
+    margin-top: 60px;
+    border-radius: 0 0 0 0;
+    color: #F3C294;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 27px;
+}

@@ -34,6 +34,7 @@ export default function Login() {
     // },[]);
 
 
+
     const auth = getAuth();
     if (email !== "" && password !== "")
     {
