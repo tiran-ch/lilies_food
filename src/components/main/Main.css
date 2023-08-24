@@ -74,7 +74,6 @@ main{
 }
 
 .specialMeals-food{
-    display: flex;
     justify-content: start;
     align-items: start;
 }

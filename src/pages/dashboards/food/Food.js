@@ -10,17 +10,16 @@ export default function Food({OpenFoodModal, closeFoodModal}) {
     const FoodItem = useSelector((state) => state.Food.food.food);
     const [quantity, setQuantity] = useState(1);
 
-
     const customStyles = {
         overlay: {
             backgroundColor: "rgba(196, 196, 196, 0.42)"
         },
         content: {
             top: '50%',
-            left: '86%',
+            left: '80%',
             right: 'auto',
             bottom: 'auto',
-            width: `30%`,
+            width: `40%`,
             height: '100%',
             marginRight: '-50%',
             transform: 'translate(-50%, -50%)',
@@ -33,6 +32,7 @@ export default function Food({OpenFoodModal, closeFoodModal}) {
     },[OpenFoodModal]);
 
     const addToCart = async (foodId)=>{
+        setQuantity(1);
         try {
             // Check if the product ID exists in the cart collection
             const cartQuery = query(collection(db, 'cart'), where('productId', '==', foodId));
@@ -49,10 +49,9 @@ export default function Food({OpenFoodModal, closeFoodModal}) {
             }else {
 
                 const cartItemDocRef = cartQuerySnapshot.docs[0].ref;
-                const cartItemData = cartQuerySnapshot.docs[0].data();
-                const existingQuantity = cartItemData.quantity;
+                const cartItemData = cartQuerySnapshot.docs[0].data().quantity;
                 await updateDoc(cartItemDocRef, {
-                    quantity: quantity,
+                    quantity: cartItemData + quantity,
                 });
 
             }

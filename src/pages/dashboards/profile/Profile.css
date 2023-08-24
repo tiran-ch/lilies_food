@@ -3,10 +3,11 @@
 .profile-data{
     width: 100%;
     margin-top: 180px;
-    padding-left: 36px;
+
 }
 
 .profile-data h3{
+    margin-left: 13px;
     color: #00302E;
     font-family: 'Poppins', sans-serif;
     font-size: 17px;
@@ -16,9 +17,10 @@
 }
 
 .profile-form{
-    margin-top: 33px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-top: 33px;
     gap: 47px;
 }
 

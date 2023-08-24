@@ -41,7 +41,9 @@ export default function Login() {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
+                const asfasf = auth.currentUser;
                 console.log(user);
+                console.log(asfasf);
                 localStorage.setItem('userToken', JSON.stringify(user.accessToken));
                 localStorage.setItem('userId', JSON.stringify(user.uid));
                 setError(false)

@@ -9,7 +9,7 @@ export const foodData = [
         {
             food: {
                 img: food1,
-                price: "N 1,000.00",
+                price: 1000.00,
                 title: "Stir Fry Pasta",
                 about: "Just have a single bite of this Black Forest pastry and it will all make a proper sense to you." +
                     " The kick of cherry and rich chocolate of this super light, airy pastry will definitely make you feel \"wow\"." +
@@ -23,7 +23,7 @@ export const foodData = [
         {
             food: {
                 img: food2,
-                price: "N 1,000.00",
+                price: 1000.00,
                 title: "Stir Fry Pasta",
                 about: "Just have a single bite of this Black Forest pastry and it will all make a proper sense to you." +
                     " The kick of cherry and rich chocolate of this super light, airy pastry will definitely make you feel \"wow\"." +
@@ -37,7 +37,7 @@ export const foodData = [
         {
             food: {
                 img: food3,
-                price: "N 1,000.00",
+                price: 1000.00,
                 title: "Stir Fry Pasta",
                 about: "Just have a single bite of this Black Forest pastry and it will all make a proper sense to you." +
                     " The kick of cherry and rich chocolate of this super light, airy pastry will definitely make you feel \"wow\"." +
@@ -51,7 +51,7 @@ export const foodData = [
         {
             food: {
                 img: food4,
-                price: "N 1,000.00",
+                price: 1000.00,
                 title: "Stir Fry Pasta",
                 about: "Just have a single bite of this Black Forest pastry and it will all make a proper sense to you." +
                     " The kick of cherry and rich chocolate of this super light, airy pastry will definitely make you feel \"wow\"." +
@@ -65,7 +65,7 @@ export const foodData = [
         {
             food: {
                 img: food5,
-                price: "N 1,000.00",
+                price: 1000.00,
                 title: "Stir Fry Pasta",
                 about: "Just have a single bite of this Black Forest pastry and it will all make a proper sense to you." +
                     " The kick of cherry and rich chocolate of this super light, airy pastry will definitely make you feel \"wow\"." +
@@ -79,7 +79,7 @@ export const foodData = [
         {
             food: {
                 img: food6,
-                price: "N 1,000.00",
+                price: 1000.00,
                 title: "Stir Fry Pasta",
                 about: "Just have a single bite of this Black Forest pastry and it will all make a proper sense to you." +
                     " The kick of cherry and rich chocolate of this super light, airy pastry will definitely make you feel \"wow\"." +

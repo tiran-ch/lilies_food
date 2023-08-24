@@ -1,18 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import Modal from "react-modal";
 import "./Profile.css";
 
-export default function Profile() {
-    const [modalIsOpen, setIsOpen] = React.useState(false);
-    const [modalAnimation, setModalAnimation] = useState(1);
-    const [modalWorking, setModalWorking] = useState();
-
-    useEffect(() => {
-        if (modalAnimation <= 45){
-            setModalAnimation(modalAnimation + 1);
-        }
-    }, [modalWorking, modalAnimation]);
-
+export default function Profile({openProfileModal, setOpenProfileModal}) {
 
     const customStyles = {
         overlay: {
@@ -20,43 +10,28 @@ export default function Profile() {
         },
         content: {
             top: '50%',
-            left: '77%',
+            left: '85.4%',
             right: 'auto',
             bottom: 'auto',
-            width: `${modalAnimation}%`,
+            width: `558px`,
             height: '100%',
             marginRight: '-50%',
             transform: 'translate(-50%, -50%)',
         },
     };
 
-    function openModal() {
-        setModalWorking(true);
-        if(modalAnimation === true){
-            setModalWorking(false);
-            setModalAnimation(1)
-
-        }else {
-            setModalWorking(true);
-            setModalAnimation(1)
-        }
-        setIsOpen(true);
-    }
-
-
     function closeModal() {
-        setIsOpen(false);
+        setOpenProfileModal(false);
     }
 
     function profileForm(event) {
         event.preventDefault();
-
     }
 
   return(
       <div className="profile">
           <Modal
-              isOpen={modalIsOpen}
+              isOpen={openProfileModal}
               onRequestClose={closeModal}
               style={customStyles}
               ariaHideApp={false}
@@ -74,7 +49,6 @@ export default function Profile() {
                   </form>
               </div>
           </Modal>
-          <button onClick={openModal}>profile Module</button>
       </div>
   )
 }
