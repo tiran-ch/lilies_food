@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./Dashboard.css";
 import logo from "../../../images/header-logo.png";
 import icon1 from "../../../images/icon1.png";
@@ -11,7 +11,7 @@ import {useDispatch} from "react-redux";
 import {foodData} from "../../../utils/utils";
 import Food from "../food/Food";
 import {db} from "../../../fireabase/Firebase";
-import { collection, doc, setDoc, getDocs, query, where, updateDoc} from "firebase/firestore";
+import {collection, doc, setDoc, getDocs, query, where, addDoc, updateDoc} from "firebase/firestore";
 import Orders from "../orders/Orders";
 
 export default function Dashboard() {
@@ -20,6 +20,7 @@ export default function Dashboard() {
     const [OpenFoodModal, setIsOpenFoodModal] = useState(false);
     const [yourCartLength, setYourCartLength] = useState();
     const [openOrdersModal, setOpenOrdersModal] = useState(false);
+    const [userName, getUserName] = useState();
 
     function foodModal(event) {
         setIsOpenFoodModal(true);
@@ -43,24 +44,22 @@ export default function Dashboard() {
 
     const addToCart = async (e)=>{
         const productIdToAdd = e.target.parentElement.parentElement.id;
+        const userId = localStorage.getItem("userId");
 
         try {
             const cartQuery = query(collection(db, 'cart'), where('productId', '==', productIdToAdd));
             const cartQuerySnapshot = await getDocs(cartQuery);
+            // console.log(cartQuerySnapshot.docs[0].data());
             if (cartQuerySnapshot.empty) {
                 const newDocRef = doc(collection(db, 'cart'));
                 await setDoc(newDocRef, {
                     productId: productIdToAdd,
                     quantity: 1,
+                    uId: JSON.parse(userId)
                 });
             }
         } catch (error) {
             console.error('Error adding to cart:', error);
-        }
-        const food = foodData.find((foodData) => foodData.food.id == e.target.parentElement.parentElement.id);
-        if(food.food.qty === undefined){
-            food.food.qty = 1;
-            dispatch({type: "ADD_CART_DATA", payload: food});
         }
     };
 
@@ -68,6 +67,22 @@ export default function Dashboard() {
         setYourCartLength(length)
     };
 
+
+    let getUserData = async ()=>{
+        let userId = localStorage.getItem("userId");
+        const cartQuery = query(collection(db, 'users'), where('uid', '==', JSON.parse(userId)));
+        const cartQuerySnapshot = await getDocs(cartQuery);
+        getUserName(cartQuerySnapshot.docs[0].data().userFullName);
+        const cartItemDocRef = cartQuerySnapshot.docs[0].ref;
+        // await updateDoc(cartItemDocRef, {
+        //     quantity: "cartItemData + quantity",
+        // });
+        // });
+    };
+
+    useEffect(()=>{
+        getUserData()
+    },[])
 
     // const addProducts = async ()=>{
     //     const newDocRef = doc(collection(db, 'praducts'));
@@ -112,7 +127,7 @@ export default function Dashboard() {
                                 <a href="#"><img src={icon1} alt=""/>Dashboard</a>
                             </li>
                             <li className="list-item d-flex border-0 justify-content-between align-items-center">
-                                <a href="profile"><img src={icon2} alt=""/>Your Profile</a>
+                                <a href="#"><img src={icon2} alt=""/>Your Profile</a>
                             </li>
                             <li className="list-item  border-0 d-flex justify-content-between align-items-center" onClick={()=>openOrder()}>
                                 <a href="#"><img src={icon3} alt=""/>Orders</a>
@@ -128,7 +143,7 @@ export default function Dashboard() {
                 <div className="user-and-foods container-fluid" >
                     <div className="row user-and-foods-block d-flex justify-content-between w-100">
                         <div className="col user-dara">
-                            <h2>Good morning, Oghenevwede!</h2>
+                            <h2>Good morning, {userName}!</h2>
                             <p>What delicious meal are you craving today?</p>
                         </div>
                         <div className="col user-image d-flex align-items-center justify-content-end">

@@ -8,12 +8,12 @@
 
 
 
-.cart-food-data{
-    display: flex;
-    padding-left: 100px;
-    justify-content: space-between;
-    width: 100%;
-}
+/*.cart-food-data{*/
+/*    display: flex;*/
+/*    padding-left: 100px;*/
+/*    justify-content: space-between;*/
+/*    width: 100%;*/
+/*}*/
 
 .cart-food-img{
     display: flex;
@@ -53,12 +53,12 @@
     line-height: 33px;
 }
 
-.about-cart-data{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin-left: 200px;
-}
+/*.about-cart-data{*/
+/*    display: flex;*/
+/*    width: 100%;*/
+/*    justify-content: space-between;*/
+/*    margin-left: 200px;*/
+/*}*/
 
 .Checkout{
     display: flex;

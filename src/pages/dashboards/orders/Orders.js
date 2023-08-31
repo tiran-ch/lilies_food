@@ -34,7 +34,27 @@ export default function Orders({openOrdersModal, setOpenOrdersModal}) {
                     ariaHideApp={false}
                     contentLabel="Example Modal"
                 >
-                    <h1>Orders</h1>
+                    <div className="row">
+                        <div className="col-12 cart-title mt-5">
+                            <h3>Your Orders</h3>
+                        </div>
+                        <div className="col-12 mt-5 d-flex">
+                            <div>
+                                <p>Item</p>
+                            </div>
+                            <div className="about-cart-data">
+                                <div>
+                                    <p>Qty</p>
+                                </div>
+                                <div>
+                                    <p>Unit Price</p>
+                                </div>
+                                <div>
+                                    <p>Sub-total</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </Modal>
             </div>
         </div>

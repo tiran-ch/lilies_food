@@ -2,9 +2,11 @@ import React, {useEffect, useState} from "react";
 import "./Login.css";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import app, {db} from "../../fireabase/Firebase";
-import {collection, addDoc, getDocs} from "@firebase/firestore";
+import {useNavigate} from "react-router";
+
 
 export default function Login() {
+    const navigate = useNavigate();
     const [show, UseShow] = useState("show");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -41,9 +43,8 @@ export default function Login() {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                const asfasf = auth.currentUser;
                 console.log(user);
-                console.log(asfasf);
+                navigate("/dashboard");
                 localStorage.setItem('userToken', JSON.stringify(user.accessToken));
                 localStorage.setItem('userId', JSON.stringify(user.uid));
                 setError(false)

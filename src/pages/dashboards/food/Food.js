@@ -32,6 +32,7 @@ export default function Food({OpenFoodModal, closeFoodModal}) {
     },[OpenFoodModal]);
 
     const addToCart = async (foodId)=>{
+        const userId = localStorage.getItem("userId");
         setQuantity(1);
         try {
             // Check if the product ID exists in the cart collection
@@ -42,7 +43,8 @@ export default function Food({OpenFoodModal, closeFoodModal}) {
                 const newDocRef = doc(collection(db, 'cart'));
                 await setDoc(newDocRef, {
                     productId: foodId,
-                    quantity: 1,
+                    quantity: quantity,
+                    uId: JSON.parse(userId),
                 });
 
                 console.log('Item added to cart successfully.');

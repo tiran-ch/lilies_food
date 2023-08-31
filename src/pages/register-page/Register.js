@@ -36,8 +36,7 @@ export default function Register() {
 
 
     const auth = getAuth();
-    if (email !== "" && password !== "" && userFullName !== "")
-    {
+    if (email !== "" && password !== "" && userFullName !== "") {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;

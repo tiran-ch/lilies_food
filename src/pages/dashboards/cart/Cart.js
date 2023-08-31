@@ -30,9 +30,10 @@ export default function Cart({modalIsOpenCart, cartLength, closeCartModal, setIs
     const consolidatedFilterResults = [];
 
     const yourCart = async ()=>{
+        const userId = localStorage.getItem("userId");
         const cartQuery = query(collection(db, 'cart'));
+        // const cartQuery = query(collection(db, 'cart'), where('uId', '==', JSON.parse(userId)));
         const cartQuerySnapshot = await getDocs(cartQuery);
-
         cartQuerySnapshot.forEach((doc) => {
             const data = doc.data().productId; // Get the data of the document
             const qty = doc.data().quantity; // Get the data of the document
@@ -57,7 +58,6 @@ export default function Cart({modalIsOpenCart, cartLength, closeCartModal, setIs
 
     const makePayment = ()=>{
         if (cartDates.length !== 0){
-            console.log("aaaaaaaaaaaaa")
             setOpenProfileModal(true);
             setIsOpenCart(false)
         }
@@ -88,22 +88,22 @@ export default function Cart({modalIsOpenCart, cartLength, closeCartModal, setIs
                             <h3>Your Cart</h3>
                         </div>
                         <div className="col-12 mt-5 d-flex">
-                            <div>
+                            <div className="col-3 pl-4 d-flex justify-content-start">
                                 <p>Item</p>
                             </div>
-                           <div className="about-cart-data">
-                               <div>
+                           <div className="about-cart-data d-flex w-100 justify-content-end">
+                               <div className="col-3">
                                    <p>Qty</p>
                                </div>
-                               <div>
+                               <div className="col-3">
                                    <p>Unit Price</p>
                                </div>
-                               <div>
+                               <div className="col-3">
                                    <p>Sub-total</p>
                                </div>
                            </div>
                         </div>
-                        <div className="col-12 mt-4 all-cart-data">
+                        <div className="col-12 mt-4 all-cart-data ">
                             {
                                 cartDates.length !== 0 &&
 
@@ -111,8 +111,8 @@ export default function Cart({modalIsOpenCart, cartLength, closeCartModal, setIs
                                     const findData = foodData.find((filterFood) => filterFood.food.id == data.food.id);
                                     // console.log(findData.food.price)
                                     return(
-                                        <div key={data.food.id} className="cart-data w-100 d-flex">
-                                            <div className="cart-food-img">
+                                        <div key={data.food.id} className="cart-data col-12 w-100 d-flex">
+                                            <div className="cart-food-img col-4">
                                                 <img src={data.food.img} alt=""/>
                                                 <div>
                                                     <div>
@@ -121,11 +121,10 @@ export default function Cart({modalIsOpenCart, cartLength, closeCartModal, setIs
                                                     <p onClick={()=>removeFood(data.food.id)}>Remove</p>
                                                 </div>
                                             </div>
-                                            <div className="cart-food-data ">
-                                                <h3>{findData.food.quantity}</h3>
-                                                <h3>N {data.food.price}</h3>
-                                                <h3>N {findData.food.price * findData.food.quantity}</h3>
-                                                {/*<h1>{a} aaaaaaaaaaaaaa</h1>*/}
+                                            <div className="cart-food-data col-8 d-flex justify-content-center">
+                                                <h3 className="col-4 d-flex justify-content-center">{findData.food.quantity}</h3>
+                                                <h3 className="col-4 d-flex justify-content-center">N {data.food.price}</h3>
+                                                <h3 className="col-4 d-flex justify-content-center">N {findData.food.price * findData.food.quantity}</h3>
                                             </div>
 
                                         </div>
