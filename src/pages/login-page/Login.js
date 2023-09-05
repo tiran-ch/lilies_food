@@ -2,7 +2,8 @@ import React, {useEffect, useState} from "react";
 import "./Login.css";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import app, {db} from "../../fireabase/Firebase";
-import {useNavigate} from "react-router";
+import { useNavigate } from "react-router-dom";
+
 
 
 export default function Login() {
