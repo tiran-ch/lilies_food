@@ -30,7 +30,7 @@ export default function Food({OpenFoodModal, closeFoodModal}) {
     useEffect( ()=>{
         setQuantity(1)
     },[OpenFoodModal]);
-
+    // const cartQuery = query(collection(db, 'cart'), where('uId', '==', JSON.parse(userId)));
     const addToCart = async (foodId)=>{
         const userId = localStorage.getItem("userId");
         setQuantity(1);
@@ -38,7 +38,7 @@ export default function Food({OpenFoodModal, closeFoodModal}) {
             // Check if the product ID exists in the cart collection
             const cartQuery = query(collection(db, 'cart'), where('productId', '==', foodId));
             const cartQuerySnapshot = await getDocs(cartQuery);
-            if (cartQuerySnapshot.empty) {
+            if (cartQuerySnapshot.empty || userId !== cartQuerySnapshot.docs[0].data().uId) {
                 // Product ID doesn't exist in the cart, so add it
                 const newDocRef = doc(collection(db, 'cart'));
                 await setDoc(newDocRef, {
@@ -49,13 +49,11 @@ export default function Food({OpenFoodModal, closeFoodModal}) {
 
                 console.log('Item added to cart successfully.');
             }else {
-
                 const cartItemDocRef = cartQuerySnapshot.docs[0].ref;
                 const cartItemData = cartQuerySnapshot.docs[0].data().quantity;
                 await updateDoc(cartItemDocRef, {
                     quantity: cartItemData + quantity,
                 });
-
             }
         } catch (error) {
             console.error('Error adding to cart:', error);

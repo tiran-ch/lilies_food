@@ -92,3 +92,23 @@ export const foodData = [
         }
     ];
 
+
+// const addProducts = async ()=>{
+//     const newDocRef = doc(collection(db, 'praducts'));
+//     await setDoc(newDocRef, {
+//         img: food1,
+//         price: 1000.00,
+//         title: "Stir Fry Pasta",
+//         about: "Just have a single bite of this Black Forest pastry and it will all make a proper sense to you." +
+//             " The kick of cherry and rich chocolate of this super light, airy pastry will definitely make you feel \"wow\"." +
+//             " The perfect combination of cherry cream and rich chocolate can provide the ultimate fulfillment to your dessert craving.\n",
+//         make: "NGN 2000.00",
+//         makeTime: "10-20 Mins",
+//         Quantity: "10 Pcs Avail",
+//         id: "1",
+//     });
+//     };
+//
+// useEffect(()=>{
+//     addProducts()
+// },[]);

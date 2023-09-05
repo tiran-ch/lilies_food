@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import "./Dashboard.css";
 import logo from "../../../images/header-logo.png";
 import icon1 from "../../../images/icon1.png";
@@ -11,10 +11,13 @@ import {useDispatch} from "react-redux";
 import {foodData} from "../../../utils/utils";
 import Food from "../food/Food";
 import {db} from "../../../fireabase/Firebase";
-import {collection, doc, setDoc, getDocs, query, where, addDoc, updateDoc} from "firebase/firestore";
+import {collection, doc, setDoc, getDocs, query, where} from "firebase/firestore";
 import Orders from "../orders/Orders";
+import { getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage";
 
 export default function Dashboard() {
+    const storage = getStorage();
+    const [userImages, getUserImages] = useState();
     const dispatch = useDispatch();
     const [modalIsOpenCart, setIsOpenCart] = useState(false);
     const [OpenFoodModal, setIsOpenFoodModal] = useState(false);
@@ -49,8 +52,7 @@ export default function Dashboard() {
         try {
             const cartQuery = query(collection(db, 'cart'), where('productId', '==', productIdToAdd));
             const cartQuerySnapshot = await getDocs(cartQuery);
-            // console.log(cartQuerySnapshot.docs[0].data());
-            if (cartQuerySnapshot.empty) {
+            if (cartQuerySnapshot.empty || userId !== cartQuerySnapshot.docs[0].data().uId) {
                 const newDocRef = doc(collection(db, 'cart'));
                 await setDoc(newDocRef, {
                     productId: productIdToAdd,
@@ -74,38 +76,24 @@ export default function Dashboard() {
         const cartQuerySnapshot = await getDocs(cartQuery);
         getUserName(cartQuerySnapshot.docs[0].data().userFullName);
         const cartItemDocRef = cartQuerySnapshot.docs[0].ref;
-        // await updateDoc(cartItemDocRef, {
-        //     quantity: "cartItemData + quantity",
-        // });
-        // });
     };
 
     useEffect(()=>{
         getUserData()
-    },[])
+    },[]);
 
-    // const addProducts = async ()=>{
-    //     const newDocRef = doc(collection(db, 'praducts'));
-    //     await setDoc(newDocRef, {
-    //         img: food1,
-    //         price: 1000.00,
-    //         title: "Stir Fry Pasta",
-    //         about: "Just have a single bite of this Black Forest pastry and it will all make a proper sense to you." +
-    //             " The kick of cherry and rich chocolate of this super light, airy pastry will definitely make you feel \"wow\"." +
-    //             " The perfect combination of cherry cream and rich chocolate can provide the ultimate fulfillment to your dessert craving.\n",
-    //         make: "NGN 2000.00",
-    //         makeTime: "10-20 Mins",
-    //         Quantity: "10 Pcs Avail",
-    //         id: "1",
-    //     });
-    //     };
-    //
-    // useEffect(()=>{
-    //     addProducts()
-    // },[]);
 
     const openOrder = ()=>{
         setOpenOrdersModal(true)
+    };
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+    }
+
+    const addUserImage =(e)=>{
+            getUserImages(URL.createObjectURL(e.target.files[0]))
     };
 
 
@@ -146,8 +134,11 @@ export default function Dashboard() {
                             <h2>Good morning, {userName}!</h2>
                             <p>What delicious meal are you craving today?</p>
                         </div>
-                        <div className="col user-image d-flex align-items-center justify-content-end">
-                            <img src={user} alt=""/>
+                        <div className="col d-flex align-items-center justify-content-end">
+                           <div className="user-image">
+                               <img src={userImages} alt=""/>
+                               <input type="file"  onChange={(e)=>addUserImage(e)}/>
+                           </div>
                         </div>
                     </div>
                     <div className="row dashboard-foods">

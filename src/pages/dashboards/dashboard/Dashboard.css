@@ -198,3 +198,27 @@
     font-weight: 600;
     line-height: 33px;
 }
+
+.user-image{
+    position: relative;
+    border-radius: 50px;
+
+}
+
+.user-image input{
+    opacity: 0.0;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50px;
+
+}
+
+.user-image img{
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+}

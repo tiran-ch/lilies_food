@@ -31,8 +31,8 @@ export default function Cart({modalIsOpenCart, cartLength, closeCartModal, setIs
 
     const yourCart = async ()=>{
         const userId = localStorage.getItem("userId");
-        const cartQuery = query(collection(db, 'cart'));
-        // const cartQuery = query(collection(db, 'cart'), where('uId', '==', JSON.parse(userId)));
+        // const cartQuery = query(collection(db, 'cart'));
+        const cartQuery = query(collection(db, 'cart'), where('uId', '==', JSON.parse(userId)));
         const cartQuerySnapshot = await getDocs(cartQuery);
         cartQuerySnapshot.forEach((doc) => {
             const data = doc.data().productId; // Get the data of the document
